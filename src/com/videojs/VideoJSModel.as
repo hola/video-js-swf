@@ -207,7 +207,7 @@ package com.videojs{
             _rtmpConnectionURL = "";
             _rtmpStream = "";
             // detect HLS by checking the extension of src
-            if(_src.indexOf(".m3u8") != -1){
+            if(_src && _src.indexOf(".m3u8") != -1){
                 _currentPlaybackType = PlaybackType.HLS;
                 broadcastEventExternally("#HLS# : M3U8 detected!");
             }
