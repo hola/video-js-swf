@@ -364,6 +364,7 @@ package com.videojs.providers{
 
             if(_src.path === null)
             {
+                _isSeeking = true;
                 _startOffset = pTime;
                 return;
             }
@@ -698,6 +699,11 @@ package com.videojs.providers{
             }
 
             _onmetadadataFired = true;
+        }
+
+        public function onTextData(pTextData:Object):void {
+            _model.broadcastEvent(new VideoPlaybackEvent(VideoPlaybackEvent.ON_TEXT_DATA, {textData:pTextData}));
+            _model.broadcastEventExternally(ExternalEventName.ON_TEXT_DATA, pTextData);
         }
 
         public function onCuePoint(pInfo:Object):void{
